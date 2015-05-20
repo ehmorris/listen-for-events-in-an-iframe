@@ -1,0 +1,13 @@
+<div class="iframe_content" style="background: red; width: 100px; height: 100px;"></div>
+
+<script src="jschannel.js"></script>
+<script src="listen-for-events-in-an-iframe.js"></script>
+<script>
+  var parent_channel = Channel.build({
+    window: window.parent,
+    origin: "*",
+    scope: "scope"
+  })
+
+  transmit_events_to(parent_channel)
+</script>
