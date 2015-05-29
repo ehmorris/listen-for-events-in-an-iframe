@@ -7,13 +7,13 @@ var frame_on = function(channel, event, selector, func) {
     }
   })
 
-  channel.bind("react_to_event", func)
+  channel.bind("react_to_event_"+event+selector, func)
 }
 
 var transmit_events_to = function(channel) {
   channel.bind("listen_for_event", function(_, params) {
     document.querySelector(params.selector).addEventListener(params.event, function() {
-      channel.notify({ method: "react_to_event" })
+      channel.notify({ method: "react_to_event_"+params.event+params.selector })
     })
   })
 }
