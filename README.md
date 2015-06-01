@@ -35,7 +35,7 @@ new TransmitEventsTo(parent_channel);
 
 ``` js
 var iframe_channel = Channel.build({
-  window: document.querySelector(".listen_for_events_in_this_iframe").contentWindow,
+  window: document.querySelector("iframe").contentWindow,
   origin: "*",
   scope: "scope"
 });
