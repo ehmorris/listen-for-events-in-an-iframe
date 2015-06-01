@@ -24,7 +24,7 @@ new TransmitEventsTo(parent_channel);
 
 ### From the page containing the iFrame
 
-* Inlcude the listen-for-events-in-an-iframe script, and the [jschannel](https://github.com/mozilla/jschannel) script
+* Include the listen-for-events-in-an-iframe script, and the [jschannel](https://github.com/mozilla/jschannel) script
 
 ``` html
 <script src="jschannel.js"></script>
