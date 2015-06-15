@@ -3,11 +3,5 @@
 <script src="jschannel.js"></script>
 <script src="listen-for-events-in-an-iframe.js"></script>
 <script>
-  var parent_channel = Channel.build({
-    window: window.parent,
-    origin: "*",
-    scope: "scope"
-  });
-
-  new TransmitEventsTo(parent_channel);
+  new TransmitEventsToParent();
 </script>
