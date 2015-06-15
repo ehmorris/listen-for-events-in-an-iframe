@@ -14,7 +14,7 @@ function ListenForIFrameEventsFrom(iframe_element) {
       }
     });
 
-    this.channel.bind("react_to_event_"+event+selector, func);
+    this.channel.bind("react_to_event_"+event+"_"+selector, func);
   };
 }
 
@@ -27,7 +27,7 @@ function TransmitEventsToParent() {
 
   channel.bind("listen_for_event", function(_, params) {
     document.querySelector(params.selector).addEventListener(params.event, function() {
-      channel.notify({ method: "react_to_event_"+params.event+params.selector });
+      channel.notify({ method: "react_to_event_"+params.event+"_"+params.selector });
     });
   });
 }
