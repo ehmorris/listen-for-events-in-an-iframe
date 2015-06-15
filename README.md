@@ -3,44 +3,33 @@
 
 ### From inside the iFrame
 
-* Include the listen-for-events-in-an-iframe script, and the [jschannel](https://github.com/mozilla/jschannel) script
+* Include the listen-for-events-in-an-iframe script and the [jschannel](https://github.com/mozilla/jschannel) script
 
 ``` html
 <script src="jschannel.js"></script>
 <script src="listen-for-events-in-an-iframe.js"></script>
 ```
 
-* Create a channel to the parent window (the page containing the iframe) and then pass that channel to a new `TransmitEventsTo`
+* Create a new `TransmitEventsToParent` instance
 
 ``` js
-var parent_channel = Channel.build({
-  window: window.parent,
-  origin: "*",
-  scope: "scope"
-});
-  
-new TransmitEventsTo(parent_channel);
+new TransmitEventsToParent();
 ```
 
 ### From the page containing the iFrame
 
-* Include the listen-for-events-in-an-iframe script, and the [jschannel](https://github.com/mozilla/jschannel) script
+* Include the listen-for-events-in-an-iframe script and the [jschannel](https://github.com/mozilla/jschannel) script
 
 ``` html
 <script src="jschannel.js"></script>
 <script src="listen-for-events-in-an-iframe.js"></script>
 ```
 
-* Create a channel to the iFrame and then pass that channel to a new `ListenForIFrameEventsFrom`
+* Create a new `ListenForIFrameEventsFrom` instance and pass it the iFrame element
 
 ``` js
-var iframe_channel = Channel.build({
-  window: document.querySelector("iframe").contentWindow,
-  origin: "*",
-  scope: "scope"
-});
-
-var frame = new ListenForIFrameEventsFrom(iframe_channel);
+var iframe_element = document.querySelector(".listen_for_events_in_this_iframe");
+var frame = new ListenForIFrameEventsFrom(iframe_element);
 ```
 
 * Now you can execute functions *outside* the iframe, based on events happening *inside* the iframe
