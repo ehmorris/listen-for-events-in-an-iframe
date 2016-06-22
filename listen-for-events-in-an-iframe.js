@@ -1,4 +1,4 @@
-var transmitable_event_object_properties = [
+var transmittable_event_object_properties = [
   'altKey',
   'bubbles',
   'button',
@@ -37,10 +37,10 @@ var transmitable_event_object_properties = [
   'y'
 ];
 
-var get_transmitable_event_object = function(event_object) {
+var get_transmittable_event_object = function(event_object) {
   var new_object = {};
 
-  transmitable_event_object_properties.forEach(function(property, _, __) {
+  transmittable_event_object_properties.forEach(function(property, _, __) {
     new_object[property] = event_object[property];
   });
 
@@ -78,10 +78,10 @@ function TransmitEventsToParent() {
 
   channel.bind("listen_for_event", function(_, params) {
     document.querySelector(params.selector).addEventListener(params.event, function(event_object) {
-      var transmitable_event_object = get_transmitable_event_object(event_object);
+      var transmittable_event_object = get_transmittable_event_object(event_object);
       channel.notify({
         method: "react_to_event_"+params.event+"_"+params.selector,
-        params: transmitable_event_object
+        params: transmittable_event_object
       });
     });
   });
